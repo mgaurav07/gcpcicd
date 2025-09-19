@@ -1,11 +1,11 @@
 steps:
 # Build docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'asia-south1-docker.pkg.dev/thinking-leaf-288804/devops-repo/app:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'asia-southeast1-docker.pkg.dev/gcp-lab-p1/gaurav-artifact-repo/app:$COMMIT_SHA', '.']
     
 # Push Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-south1-docker.pkg.dev/thinking-leaf-288804/devops-repo/app:$COMMIT_SHA',]
+    args: ['push', 'asia-southeast1-docker.pkg.dev/gcp-lab-p1/gaurav-artifact-repo/app:$COMMIT_SHA',]
 
 # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -14,8 +14,8 @@ steps:
       - run
       - deploy
       - gcp-devops-service
-      - --image=asia-south1-docker.pkg.dev/thinking-leaf-288804/devops-repo/app:$COMMIT_SHA
-      - --region=asia-south1
+      - --image=asia-southeast1-docker.pkg.dev/gcp-lab-p1/gaurav-artifact-repo/app:$COMMIT_SHA
+      - --region=asia-southeast1
       - --platform=managed
       - --allow-unauthenticated
 
